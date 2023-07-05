@@ -1195,6 +1195,8 @@ class Llama:
         model: Optional[str] = None,
         stopping_criteria: Optional[StoppingCriteriaList] = None,
         logits_processor: Optional[LogitsProcessorList] = None,
+        rope_freq_base: int = 80000,
+        rope_freq_scale: float = 0.5,
     ) -> Union[Completion, Iterator[CompletionChunk]]:
         """Generate text from a prompt.
 
@@ -1239,6 +1241,8 @@ class Llama:
             model=model,
             stopping_criteria=stopping_criteria,
             logits_processor=logits_processor,
+            rope_freq_base=rope_freq_base,
+            rope_freq_scale=rope_freq_scale,
         )
         if stream:
             chunks: Iterator[CompletionChunk] = completion_or_chunks
@@ -1268,6 +1272,8 @@ class Llama:
         model: Optional[str] = None,
         stopping_criteria: Optional[StoppingCriteriaList] = None,
         logits_processor: Optional[LogitsProcessorList] = None,
+        rope_freq_base: int = 80000,
+        rope_freq_scale: float = 0.5,
     ) -> Union[Completion, Iterator[CompletionChunk]]:
         """Generate text from a prompt.
 
@@ -1312,6 +1318,8 @@ class Llama:
             model=model,
             stopping_criteria=stopping_criteria,
             logits_processor=logits_processor,
+            rope_freq_base=rope_freq_base,
+            rope_freq_scale=rope_freq_scale,
         )
 
     def _convert_text_completion_to_chat(
@@ -1390,6 +1398,8 @@ class Llama:
         mirostat_eta: float = 0.1,
         model: Optional[str] = None,
         logits_processor: Optional[LogitsProcessorList] = None,
+        rope_freq_base: int = 80000,
+        rope_freq_scale: float = 0.5,
     ) -> Union[ChatCompletion, Iterator[ChatCompletionChunk]]:
         """Generate a chat completion from a list of messages.
 
@@ -1432,6 +1442,8 @@ class Llama:
             mirostat_eta=mirostat_eta,
             model=model,
             logits_processor=logits_processor,
+            rope_freq_base=rope_freq_base,
+            rope_freq_scale=rope_freq_scale,
         )
         if stream:
             chunks: Iterator[CompletionChunk] = completion_or_chunks  # type: ignore
