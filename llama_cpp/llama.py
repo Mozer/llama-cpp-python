@@ -221,6 +221,8 @@ class Llama:
         lora_path: Optional[str] = None,
         low_vram: bool = False,
         verbose: bool = True,
+        rope_freq_base: int = 10000,
+        rope_freq_scale: float = 1.0,
     ):
         """Load a llama.cpp model from `model_path`.
 
