@@ -800,6 +800,8 @@ class Llama:
         model: Optional[str] = None,
         stopping_criteria: Optional[StoppingCriteriaList] = None,
         logits_processor: Optional[LogitsProcessorList] = None,
+        rope_freq_base: int = 80000,
+        rope_freq_scale: float = 0.5,
     ) -> Union[Iterator[Completion], Iterator[CompletionChunk]]:
         assert self.ctx is not None
 
