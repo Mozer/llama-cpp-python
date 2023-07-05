@@ -76,7 +76,9 @@ def _load_shared_library(lib_base_name: str):
 _lib_base_name = "llama"
 
 # Load the library
+print("d4 before _load_shared_library")
 _lib = _load_shared_library(_lib_base_name)
+print("d5 after _load_shared_library")
 
 # Misc
 c_float_p = POINTER(c_float)
@@ -195,6 +197,9 @@ class llama_context_params(Structure):
         ("use_mmap", c_bool),
         ("use_mlock", c_bool),
         ("embedding", c_bool),
+        ("n_batch", c_int32),
+        ("rope_freq_base", c_int32),
+        ("rope_freq_scale", c_float),
     ]
 
 
@@ -309,6 +314,7 @@ _lib.llama_init_backend.restype = None
 #                             const char * path_model,
 #         struct llama_context_params   params);
 def llama_load_model_from_file(
+    print("d3 before llama_load_model_from_file")
     path_model: bytes, params: llama_context_params
 ) -> llama_model_p:
     return _lib.llama_load_model_from_file(path_model, params)
@@ -1023,6 +1029,8 @@ _lib.llama_print_system_info.restype = c_char_p
 
 _llama_initialized = False
 
+print("d0 before init")
 if not _llama_initialized:
     llama_init_backend(c_bool(False))
+    print("d1 after init")
     _llama_initialized = True
