@@ -250,6 +250,7 @@ class Llama:
         Returns:
             A Llama instance.
         """
+        print("d llama py in init")
         self.verbose = verbose
         self.model_path = model_path
 
