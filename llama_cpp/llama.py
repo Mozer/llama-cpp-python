@@ -275,6 +275,9 @@ class Llama:
         self.lora_base = lora_base
         self.lora_path = lora_path
 
+        self.rope_freq_base = rope_freq_base
+        self.rope_freq_scale = rope_freq_scale
+
         ### DEPRECATED ###
         self.n_parts = n_parts
         ### DEPRECATED ###
