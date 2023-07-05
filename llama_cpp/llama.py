@@ -1453,6 +1453,7 @@ class Llama:
             return self._convert_text_completion_to_chat(completion)
 
     def __del__(self):
+        print("d7 before __del__")
         if self.model is not None:
             llama_cpp.llama_free_model(self.model)
             self.model = None
